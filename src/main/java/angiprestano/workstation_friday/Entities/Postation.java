@@ -6,6 +6,9 @@ import lombok.Setter;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,6 +24,7 @@ public class Postation {
     private Users users;
 
     private Edifice edifice;
+    private List<Prenotation> prenotations = new ArrayList<>();
 
     public Postation(String description, Type type, int maxOccupants, Users users, Edifice edifice) {
         this.description = description;
@@ -28,6 +32,15 @@ public class Postation {
         this.maxOccupants = maxOccupants;
         this.users = users;
         this.edifice = edifice;
+    }
+
+    public Postation(String description, Type type, int maxOccupants, Users users, Edifice edifice, List<Prenotation> prenotations) {
+        this.description = description;
+        this.type = type;
+        this.maxOccupants = maxOccupants;
+        this.users = users;
+        this.edifice = edifice;
+        this.prenotations = prenotations;
     }
 
     @Override

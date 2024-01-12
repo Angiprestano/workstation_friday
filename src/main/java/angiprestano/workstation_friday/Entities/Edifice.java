@@ -19,11 +19,17 @@ public class Edifice {
 
     private Postation postation;
 
-    public Edifice(long id, String name, String address, String city) {
-        this.id = id;
+    public Edifice(String name, String address, String city) {
         this.name = name;
         this.address = address;
         this.city = city;
+    }
+
+    public Edifice(String name, String address, String city, Postation postation) {
+        this.name = name;
+        this.address = address;
+        this.city = city;
+        this.postation = postation;
     }
 
     @Override
