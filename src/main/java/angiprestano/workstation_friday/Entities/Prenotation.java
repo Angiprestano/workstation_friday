@@ -1,19 +1,31 @@
 package angiprestano.workstation_friday.Entities;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ManyToAny;
 
 import java.time.LocalDate;
-
+@Entity
+@Table(name = "prenotation")
 @Getter
 @Setter
 @NoArgsConstructor
 
 public class Prenotation {
+    @Id
+    @GeneratedValue
     private long id;
+
     private LocalDate hourofday;
+
+    @ManyToOne
+    @JoinColumn(name = "users")
     private Users users;
+
+    @ManyToOne
+    @JoinColumn(name = "postation")
     private Postation postation;
 
     @Override

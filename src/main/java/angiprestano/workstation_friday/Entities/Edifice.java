@@ -1,14 +1,18 @@
 package angiprestano.workstation_friday.Entities;
 
 
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
+@Entity
+@Table(name = "Edifice")
 @Getter
 @Setter
 @NoArgsConstructor
 public class Edifice {
     @Getter
+    @Id
+    @GeneratedValue
     private long id;
 
     private String name;
@@ -17,6 +21,7 @@ public class Edifice {
 
     private String city;
 
+    @OneToOne(mappedBy = "edifice")
     private Postation postation;
 
     public Edifice(String name, String address, String city) {

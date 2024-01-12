@@ -1,5 +1,6 @@
 package angiprestano.workstation_friday.Entities;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,13 +10,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "postation")
 @Getter
 @Setter
 @NoArgsConstructor
 public class Postation {
+    @Id
+    @GeneratedValue
     private long id;
 
     private String description;
+    @Enumerated(EnumType.STRING)
 
     private Type type;
 
@@ -23,7 +29,10 @@ public class Postation {
 
     private Users users;
 
+    @OneToOne
+    @JoinColumn(name = "id_edifice")
     private Edifice edifice;
+    @OneToMany(mappedBy = "postation")
     private List<Prenotation> prenotations = new ArrayList<>();
 
     public Postation(String description, Type type, int maxOccupants, Users users, Edifice edifice) {
